@@ -3,6 +3,15 @@
           box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #333;
+}
+
 body {
   margin: 0;
   background-color: #111;
