@@ -39,6 +39,10 @@ body {
   border: 1px solid #444;
 }
 
+.columns .col {
+  position: relative;
+}
+
 .actions {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -94,6 +98,9 @@ body {
   background-color: #32eb3b;
   color: #111;
   max-width: 500px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   -webkit-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
 }
@@ -150,5 +157,24 @@ body {
     -webkit-transform: translateY(105%);
             transform: translateY(105%);
   }
+}
+
+.copy {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 6px 10px;
+  background: transparent;
+  -webkit-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+  cursor: pointer;
+  border: 2px solid #32eb3b;
+  font-weight: bold;
+  color: #32eb3b;
+}
+
+.copy:hover {
+  color: #111;
+  background-color: #32eb3b;
 }
 /*# sourceMappingURL=style.css.map */

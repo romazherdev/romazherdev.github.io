@@ -12,13 +12,21 @@
         },`;
     const input = document.getElementById('input');
     const output = document.getElementById('output');
-    const button = document.getElementById('convert');
+	const button = document.getElementById('convert');
+	const copy = document.querySelector('.copy');
     if (button && input && output) {
         button.addEventListener('click', () => convert(input.value));
         input.addEventListener('keydown', (e) => {
             if (e.key == 'Enter' && e.ctrlKey) convert(input.value);
-        })
-    }
+		})
+	}
+	if (copy) {
+		copy.addEventListener('click', function() {
+			output.select();
+			document.execCommand('copy');
+			snackbar('Copied');
+		})
+	}
 
     function convert(interface) {
         const props = [];
