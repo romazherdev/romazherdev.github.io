@@ -1,0 +1,110 @@
+$accent: rgb(50, 235, 59);
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: #111;
+    color: $accent;
+	height: 100vh;
+	font-family: sans-serif;
+}
+
+.container {
+    max-width: 1140px;
+    margin: auto;
+    height: 100%;
+    padding: 40px 20px;
+}
+
+.columns {
+    display: grid;
+	grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    height: 80%;
+    .area {
+		width: 100%;
+		padding: 15px;
+        resize: none;
+        height: 100%;
+        background-color: #222;
+        caret-color: #fff;
+        outline-color: $accent;
+        color: #fff;
+        border: 1px solid #444;
+    }
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#convert {
+    background: none;
+    border: 2px solid $accent;
+    color: $accent;
+    padding: 12px 30px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+	font-weight: bold;
+	outline: none;
+	position: relative;
+    &:hover {
+        background-color: $accent;
+        color: #111;
+    }
+}
+
+.tooltip {
+	position: absolute;
+	top: 120%;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	text-transform: normal;
+	font-size: 10px;
+}
+
+.snackbar {
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	transform: translateY(105%);
+	margin: 0 auto;
+	text-align: center;
+	padding: 10px 30px;
+	background-color: $accent;
+	color: #111;
+	max-width: 500px;
+	transition: all .2s ease-in-out;
+	&.enter {
+		animation: fadein .2s ease-out 1 forwards;
+	}
+	&.leave {
+		animation: fadeout .2s ease-in 1 forwards;
+	}
+}
+
+@keyframes fadein {
+	0% {
+		transform: translateY(105%);
+	}
+	100% {
+		transform: translateY(0%);
+	}
+}
+
+@keyframes fadeout {
+	0% {
+		transform: translateY(0%);
+	}
+	100% {
+		transform: translateY(105%);
+	}
+}
