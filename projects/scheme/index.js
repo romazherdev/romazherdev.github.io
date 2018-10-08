@@ -38,13 +38,10 @@
         parseProps.forEach(prop => {
             props.push({
                 name: prop.split(':')[0].trim().replace(/\?/g, ''),
-                type: prop.split(':')[1].trim().replace(/;/, ''),
+                type: prop.split(':')[1].trim().replace(/;/, '').replace('boolean', 'bool'),
                 required: !prop.match(/\?/),
             });
         });
-        for (let i = 0; i < props.length; i++) {
-            if (props[i].type === 'boolean') props[i].type = 'bool';
-        }
 
         const reqStr = props.filter(p => p.required).reduce((acc, p) => {
             return acc + `'${p.name}', `;
