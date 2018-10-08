@@ -30,7 +30,7 @@
 
     function convert(interface) {
         const props = [];
-        const parseProps = interface.match(/\w+\??\s*:\s*\w+;/gm);
+		const parseProps = interface.match(/\w+\??\s*:\s*\w+;/gm).filter(p => !p.match(/^(_id)/));
         if (!parseProps) {
             snackbar('Interface has no properties')
             return;
