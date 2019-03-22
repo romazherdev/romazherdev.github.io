@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="tg-chart.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <svg height="30" viewBox="-12 0 448 448.04455" width="30" xmlns="http://www.w3.org/2000/svg" class="theme theme_dark">
+            <path style="transition:.2s"
+                d="m224.023438 448.03125c85.714843.902344 164.011718-48.488281 200.117187-126.230469-22.722656 9.914063-47.332031 14.769531-72.117187 14.230469-97.15625-.109375-175.890626-78.84375-176-176 .972656-65.71875 37.234374-125.832031 94.910156-157.351562-15.554688-1.980469-31.230469-2.867188-46.910156-2.648438-123.714844 0-224.0000005 100.289062-224.0000005 224 0 123.714844 100.2851565 224 224.0000005 224zm0 0" />
+        </svg>
+    </header>
+
+    <div class="grid" id="grid">
+    </div>
+
+    <!--SCRIPTS-->
+    <script src="tgchart.js"></script>
+    <script>
+        (function () {
+            let gridRef = document.getElementById('grid');
+            let header = document.querySelector('.header');
+            let themeSwitcher = document.querySelector('.theme');
+            let charts = [];
+            let theme = 'light';
+
+            fetch('./data/chart_data.json')
+                .then(res => res && res.json())
+                .then(res => {
+                    res.forEach(chartData => {
+                        const gridItem = document.createElement('div');
+
+                        gridItem.className = 'grid__item';
+                        gridRef.appendChild(gridItem);
+
+                        charts.push(new TgChart(gridItem, chartData));
+                    });
+                });
+
+            themeSwitcher.addEventListener('click', () => {
+                themeSwitcher.classList.toggle(`theme_rotated`);
+                header.classList.toggle(`header_dark`);
+                themeSwitcher.classList.toggle(`theme_dark`);
+                
+                theme = theme === 'light' ? 'dark' : 'light';
+
+                document.body.classList.toggle('body_dark');
+                charts.forEach(el => el.switchTheme());
+            });
+        }())
+    </script>
+</body>
+
+</html>
