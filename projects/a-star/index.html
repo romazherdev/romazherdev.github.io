@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A* pathfinding algorythm</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <header>
+        <fieldset class="form">
+            <label><span class="input-label">Size: </span><input id="size" type="number" min="2" max="100" step="5"></label>
+            <label><span class="input-label">Walls: </span><input id="walls" type="number" min="0" max="1" step="0.1"></label>
+        </fieldset>
+        <button onclick="refresh()">Refresh</button>
+        <p id="text" class="hidden" aria-hidden="true">No solution :(</p>
+    </header>
+    <main id="canvas"></main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/p5.js"></script>
+    <script src="./sketch.js"></script>
+</body>
+</html>
